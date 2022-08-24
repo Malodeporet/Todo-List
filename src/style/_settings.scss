@@ -1,0 +1,27 @@
+$color-1: #12343b;
+$color-2: linear-gradient(to right bottom, #e1b382, #c89666);
+$color-3: linear-gradient(
+  90deg,
+  rgba(93, 12, 255, 1) 0%,
+  rgba(155, 0, 250, 1) 100%
+);
+
+.container {
+  background: $color-2;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-wrapper {
+  background-color: $color-1;
+  min-width: 450px;
+  min-height: 650px;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 3px 6px 40px #000;
+  margin-bottom: 10px;
+}
