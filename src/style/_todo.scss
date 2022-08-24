@@ -17,4 +17,18 @@
     color: white;
     background: $color-3;
   }
+
+  &_list-completed {
+    margin-top: 50px;
+  }
+
+  .input {
+    width: 50px;
+    height: 30px;
+  }
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.8;
+    background: $color-4;
+  }
 }
