@@ -1,4 +1,4 @@
-import Todo from './components/Todo';
+import TodoForm from './components/TodoForm';
 import TaskModal from './components/TaskModal';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -8,7 +8,7 @@ function App() {
       <div className="app-wrapper">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Todo />} />
+            <Route path="/" element={<TodoForm />} />
             <Route path="/todo/:id" element={<TaskModal />} />
           </Routes>
         </BrowserRouter>

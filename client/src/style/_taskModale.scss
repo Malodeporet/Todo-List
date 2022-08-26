@@ -32,11 +32,12 @@
     justify-content: flex-end;
   }
 
-  &_titleCloseBtn button {
+  &_titleCloseBtn a {
     background-color: transparent;
     border: none;
-    font-size: 15px;
+    font-size: 30px;
     cursor: pointer;
+    text-decoration: none;
     color: red;
   }
 

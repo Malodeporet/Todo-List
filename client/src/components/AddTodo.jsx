@@ -18,14 +18,16 @@ const AddTodo = ({ addNewTodo }) => {
     e.preventDefault();
     try {
       const res = await axios.post("/addTodo", { title, desc });
-      console.log(res.data);
+      addNewTodo(res.data);
       setOpenModal(false);
       setTitle("");
       setDesc("");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleCloseClick = (e) => {
+  const handleCloseClick = () => {
     setOpenModal(false);
     setTitle("");
     setDesc("");
