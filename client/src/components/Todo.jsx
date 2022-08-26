@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "./Button";
+import AddTodo from "./AddTodo";
 
 const Todo = () => {
   // State
@@ -11,24 +12,40 @@ const Todo = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       const res = await axios.get("/todos");
+      console.log(res.data);
       setTodos(res.data);
     };
     fetchTodos();
   }, []);
+  console.log(todos);
 
   // Action of the checkbox to change the state of a Todo to completed
-  const completeTask = (id) => {
-    setTodos(
-      todos.map((item) => {
-        if (item._id === id) {
-          console.log(item.title, "Completed!");
-          return { ...item, completed: !item.completed };
-        } else {
-          return item;
-        }
-      })
-    );
+
+  const updateTodo = async (id) => {
+    const res = await axios.put("/todoCompleted/" + id);
+    setTodos(res.data);
+    console.log(res.data);
   };
+
+  //   useEffect(() => {
+  //     // DELETE request using axios with async/await
+  //     async function deletePost() {
+  //         await axios.delete("/delete/" + id);
+  //         setStatus('Delete successful');
+  //     }
+
+  //     deletePost();
+  // }, []);
+
+  // Delete a Todo
+  // const deleteTodo = (id) => {
+  //   const deleteTask = async () => {
+  //     const res = await axios.delete("/delete/" + id);
+  //     console.log(res.data);
+
+  //   };
+  //   deleteTask();
+  // };
 
   // List of the Tasks to do
   const myTodos = todos
@@ -54,7 +71,7 @@ const Todo = () => {
             className="todo_checkbox"
             type="checkbox"
             data-testid={`checkbox-${todo._id}`}
-            onClick={() => completeTask(todo._id)}
+            onClick={() => updateTodo(todo._id)}
           />
         </div>
       );
@@ -65,9 +82,10 @@ const Todo = () => {
     .filter((todo) => todo.completed === true)
     .map((todo) => {
       return (
-        <li className="todo_item completed" key={todo._id}>
-          {todo.title}
-        </li>
+        <div key={todo._id}>
+          <li className="todo_item completed">{todo.title}</li>
+          {/* <button onClick={deleteTodo}>Delete</button> */}
+        </div>
       );
     });
 
@@ -79,6 +97,7 @@ const Todo = () => {
         <ul className="todo_list">{myTodos}</ul>
         <ul className="todo_list-completed">{myTodosCompleted}</ul>
       </div>
+      <AddTodo />
     </div>
   );
 };

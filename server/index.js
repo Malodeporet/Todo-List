@@ -14,6 +14,8 @@ const connect = () => {
     });
 };
 
+//middlewares
+app.use(express.json());
 app.use("/api", todoRoutes);
 
 app.listen(8800, () => {

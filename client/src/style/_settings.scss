@@ -14,6 +14,14 @@ $color-5: linear-gradient(
 
 $color-6: #34495e;
 $color-7: #b2e5ce;
+$color-8: linear-gradient(
+  180deg,
+  #adffff 0,
+  #a4ffff 25%,
+  #9df2f2 50%,
+  #97dade 75%,
+  #92c5cb 100%
+);
 
 .container {
   background: $color-2;
